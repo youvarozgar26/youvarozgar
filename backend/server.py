@@ -321,18 +321,22 @@ async def get_stats():
     total_users = await db.users.count_documents({})
     total_jobs = await db.jobs.count_documents({"is_active": True})
     
-    # Get users by category
-    users_by_category = {}
-    for cat in JOB_CATEGORIES:
-        count = await db.users.count_documents({"job_category": cat["id"]})
-        users_by_category[cat["id"]] = count
+    # Get users by category using aggregation (optimized - single query)
+    category_pipeline = [
+        {"$group": {"_id": "$job_category", "count": {"$sum": 1}}}
+    ]
+    category_results = await db.users.aggregate(category_pipeline).to_list(None)
+    users_by_category = {cat["id"]: 0 for cat in JOB_CATEGORIES}  # Initialize with 0
+    for item in category_results:
+        if item["_id"] in users_by_category:
+            users_by_category[item["_id"]] = item["count"]
     
-    # Get users by location
-    users_by_location = {}
-    for loc in LOCATIONS:
-        count = await db.users.count_documents({"location": loc["id"]})
-        if count > 0:
-            users_by_location[loc["id"]] = count
+    # Get users by location using aggregation (optimized - single query)
+    location_pipeline = [
+        {"$group": {"_id": "$location", "count": {"$sum": 1}}}
+    ]
+    location_results = await db.users.aggregate(location_pipeline).to_list(None)
+    users_by_location = {item["_id"]: item["count"] for item in location_results if item["count"] > 0}
     
     return {
         "total_users": total_users,
