@@ -1,0 +1,98 @@
+[
+  {
+    "test": "Health Check",
+    "success": true,
+    "message": "Health check passed - Status: healthy",
+    "timestamp": "2026-02-22T10:35:34.248317"
+  },
+  {
+    "test": "Job Categories",
+    "success": true,
+    "message": "Got 8 categories: Waiter, Helper, Labour...",
+    "timestamp": "2026-02-22T10:35:34.303991"
+  },
+  {
+    "test": "Locations",
+    "success": true,
+    "message": "Got 12 cities: Delhi, Mumbai, Bangalore...",
+    "timestamp": "2026-02-22T10:35:34.352022"
+  },
+  {
+    "test": "Send OTP",
+    "success": true,
+    "message": "OTP sent successfully: OTP भेज दिया गया है (OTP sent successfully)",
+    "timestamp": "2026-02-22T10:35:34.407316"
+  },
+  {
+    "test": "Verify OTP (Valid)",
+    "success": true,
+    "message": "Valid OTP accepted: OTP सही है (OTP verified successfully)",
+    "timestamp": "2026-02-22T10:35:34.453427"
+  },
+  {
+    "test": "Verify OTP (Invalid)",
+    "success": true,
+    "message": "Invalid OTP correctly rejected: गलत OTP, दुबारा कोशिश करें (Invalid OTP, please try again)",
+    "timestamp": "2026-02-22T10:35:34.502045"
+  },
+  {
+    "test": "Register User (New)",
+    "success": true,
+    "message": "User registered with ID: 81755264-a4ae-4b57-ad77-d8242e949e18",
+    "timestamp": "2026-02-22T10:35:34.553681"
+  },
+  {
+    "test": "Register User (Duplicate)",
+    "success": true,
+    "message": "Duplicate mobile correctly rejected",
+    "timestamp": "2026-02-22T10:35:34.601783"
+  },
+  {
+    "test": "Get Users (All)",
+    "success": true,
+    "message": "Retrieved 2 users",
+    "timestamp": "2026-02-22T10:35:34.654452"
+  },
+  {
+    "test": "Get Users (Category Filter)",
+    "success": true,
+    "message": "Found 2 waiters",
+    "timestamp": "2026-02-22T10:35:34.709574"
+  },
+  {
+    "test": "Get Users (Location Filter)",
+    "success": true,
+    "message": "Found 2 users in Delhi",
+    "timestamp": "2026-02-22T10:35:34.759297"
+  },
+  {
+    "test": "Stats API",
+    "success": true,
+    "message": "Stats: 2 users, 0 jobs",
+    "timestamp": "2026-02-22T10:35:34.820191"
+  },
+  {
+    "test": "Create Job",
+    "success": true,
+    "message": "Job created with ID: 6c9448f2-e760-4eaa-8782-3bdcb8e62405",
+    "timestamp": "2026-02-22T10:35:34.892158"
+  },
+  {
+    "test": "Get Jobs (All)",
+    "success": true,
+    "message": "Retrieved 1 active jobs",
+    "timestamp": "2026-02-22T10:35:34.942497"
+  },
+  {
+    "test": "Get Jobs (Category Filter)",
+    "success": true,
+    "message": "Found 1 waiter jobs",
+    "timestamp": "2026-02-22T10:35:34.990949"
+  },
+  {
+    "test": "Get Jobs (Location Filter)",
+    "success": true,
+    "message": "Found 1 jobs in Delhi",
+    "timestamp": "2026-02-22T10:35:35.043214"
+  }
+]
