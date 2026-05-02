@@ -17,7 +17,10 @@ import { APP_CONFIG, LOGO_URL, STATS, WHY_YOUVAROZGAR, TESTIMONIALS, FOUNDER } f
 import { useVoice } from '../src/hooks/useVoice';
 import { VOICE_GUIDE } from '../src/constants/appData';
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
+
+// Worker image from website
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1706715201231-b703e7df3395?w=600&q=80';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -62,59 +65,84 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Hero Section */}
+        {/* Hero Section - Website Style */}
         <View style={styles.heroSection}>
-          <Text style={styles.tagline}>{APP_CONFIG.tagline}</Text>
-          <Text style={styles.heroTitle}>नौकरियाँ ढूंढना{"\n"}अब हुआ आसान</Text>
-          <Text style={styles.heroSubtitle}>
-            मुंबई और महाराष्ट्र में <Text style={styles.highlight}>jobs</Text> और <Text style={styles.highlight}>workers</Text> अब एक क्लिक दूर। बिना middleman, सीधे आप तक।
-          </Text>
-
-          {/* CTA Buttons */}
-          <View style={styles.ctaContainer}>
-            <TouchableOpacity 
-              style={styles.primaryButton}
-              onPress={() => router.push('/job-seeker')}
-            >
-              <MaterialIcons name="work" size={20} color={COLORS.white} />
-              <Text style={styles.primaryButtonText}>मुझे नौकरी चाहिए</Text>
-            </TouchableOpacity>
-            
-            <TouchableOpacity 
-              style={styles.secondaryButton}
-              onPress={() => router.push('/employer')}
-            >
-              <MaterialIcons name="people" size={20} color={COLORS.primaryBlue} />
-              <Text style={styles.secondaryButtonText}>मुझे वर्कर चाहिए</Text>
-            </TouchableOpacity>
-          </View>
-
-          {/* Trust Badges */}
-          <View style={styles.trustBadges}>
-            <View style={styles.badge}>
-              <MaterialIcons name="block" size={16} color={COLORS.accentGreen} />
-              <Text style={styles.badgeText}>No Middleman</Text>
-            </View>
-            <View style={styles.badge}>
-              <MaterialIcons name="check-circle" size={16} color={COLORS.accentGreen} />
-              <Text style={styles.badgeText}>Free Registration</Text>
-            </View>
-            <View style={styles.badge}>
-              <MaterialIcons name="verified" size={16} color={COLORS.accentGreen} />
-              <Text style={styles.badgeText}>Verified Jobs</Text>
+          {/* Floating Stats Badge */}
+          <View style={styles.floatingStatBadge}>
+            <MaterialIcons name="business" size={20} color={COLORS.primaryOrange} />
+            <View>
+              <Text style={styles.floatingStatNumber}>500+</Text>
+              <Text style={styles.floatingStatLabel}>Companies Hiring</Text>
             </View>
           </View>
-        </View>
 
-        {/* Stats Section */}
-        <View style={styles.statsSection}>
-          <View style={styles.statCard}>
-            <Text style={styles.statNumber}>{STATS.workers}</Text>
-            <Text style={styles.statLabel}>{STATS.workersLabel}</Text>
+          <View style={styles.heroContent}>
+            {/* Left Content */}
+            <View style={styles.heroLeft}>
+              <View style={styles.tagBadge}>
+                <MaterialIcons name="auto-awesome" size={14} color={COLORS.primaryOrange} />
+                <Text style={styles.tagline}>{APP_CONFIG.tagline}</Text>
+              </View>
+              
+              <Text style={styles.heroTitle}>
+                नौकरियाँ ढूंढना{"\n"}अब हुआ <Text style={styles.heroTitleHighlight}>आसान</Text>
+              </Text>
+              
+              <Text style={styles.heroSubtitle}>
+                मुंबई और महाराष्ट्र में <Text style={styles.highlight}>jobs</Text> और <Text style={styles.highlight}>workers</Text> अब एक क्लिक दूर। बिना middleman, सीधे आप तक।
+              </Text>
+
+              {/* CTA Buttons - Side by Side */}
+              <View style={styles.ctaRow}>
+                <TouchableOpacity 
+                  style={styles.primaryButton}
+                  onPress={() => router.push('/job-seeker')}
+                >
+                  <MaterialIcons name="work" size={18} color={COLORS.white} />
+                  <Text style={styles.primaryButtonText}>मुझे नौकरी चाहिए</Text>
+                </TouchableOpacity>
+                
+                <TouchableOpacity 
+                  style={styles.secondaryButton}
+                  onPress={() => router.push('/employer')}
+                >
+                  <MaterialIcons name="people" size={18} color={COLORS.primaryOrange} />
+                  <Text style={styles.secondaryButtonText}>मुझे वर्कर चाहिए</Text>
+                </TouchableOpacity>
+              </View>
+
+              {/* Trust Badges */}
+              <View style={styles.trustBadges}>
+                <View style={styles.badge}>
+                  <MaterialIcons name="check-circle" size={16} color={COLORS.accentGreen} />
+                  <Text style={styles.badgeText}>No Middleman</Text>
+                </View>
+                <View style={styles.badge}>
+                  <MaterialIcons name="check-circle" size={16} color={COLORS.accentGreen} />
+                  <Text style={styles.badgeText}>Free Registration</Text>
+                </View>
+                <View style={styles.badge}>
+                  <MaterialIcons name="check-circle" size={16} color={COLORS.accentGreen} />
+                  <Text style={styles.badgeText}>Verified Jobs</Text>
+                </View>
+              </View>
+            </View>
           </View>
-          <View style={styles.statCard}>
-            <Text style={styles.statNumber}>{STATS.companies}</Text>
-            <Text style={styles.statLabel}>{STATS.companiesLabel}</Text>
+
+          {/* Hero Image */}
+          <Image 
+            source={{ uri: HERO_IMAGE }} 
+            style={styles.heroImage} 
+            resizeMode="cover"
+          />
+
+          {/* Bottom Stats Card */}
+          <View style={styles.bottomStatCard}>
+            <MaterialIcons name="trending-up" size={24} color={COLORS.accentGreen} />
+            <View>
+              <Text style={styles.bottomStatNumber}>5000+</Text>
+              <Text style={styles.bottomStatLabel}>Workers Registered</Text>
+            </View>
           </View>
         </View>
 
@@ -232,21 +260,65 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   heroSection: {
-    padding: SPACING.lg,
     backgroundColor: COLORS.white,
+    position: 'relative',
+    minHeight: 450,
+    overflow: 'hidden',
+  },
+  floatingStatBadge: {
+    position: 'absolute',
+    top: SPACING.md,
+    right: SPACING.md,
+    backgroundColor: COLORS.white,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.sm,
+    borderRadius: BORDER_RADIUS.lg,
+    gap: SPACING.sm,
+    zIndex: 10,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+  },
+  floatingStatNumber: {
+    fontSize: FONT_SIZES.lg,
+    fontWeight: 'bold',
+    color: COLORS.textPrimary,
+  },
+  floatingStatLabel: {
+    fontSize: FONT_SIZES.xs,
+    color: COLORS.textSecondary,
+  },
+  heroContent: {
+    padding: SPACING.lg,
+    paddingTop: SPACING.xxl,
+  },
+  heroLeft: {
+    width: '100%',
+  },
+  tagBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SPACING.xs,
+    marginBottom: SPACING.md,
   },
   tagline: {
     fontSize: FONT_SIZES.sm,
     color: COLORS.primaryOrange,
     fontWeight: '600',
-    marginBottom: SPACING.sm,
   },
   heroTitle: {
-    fontSize: FONT_SIZES.hero,
+    fontSize: 32,
     fontWeight: 'bold',
-    color: COLORS.textPrimary,
-    lineHeight: 44,
+    color: COLORS.primaryBlue,
+    lineHeight: 42,
     marginBottom: SPACING.md,
+  },
+  heroTitleHighlight: {
+    color: COLORS.primaryOrange,
   },
   heroSubtitle: {
     fontSize: FONT_SIZES.md,
@@ -258,45 +330,47 @@ const styles = StyleSheet.create({
     color: COLORS.primaryOrange,
     fontWeight: '600',
   },
-  ctaContainer: {
-    gap: SPACING.md,
+  ctaRow: {
+    flexDirection: 'row',
+    gap: SPACING.sm,
     marginBottom: SPACING.lg,
   },
   primaryButton: {
+    flex: 1,
     backgroundColor: COLORS.primaryOrange,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: SPACING.md,
-    borderRadius: BORDER_RADIUS.md,
-    gap: SPACING.sm,
+    borderRadius: BORDER_RADIUS.full,
+    gap: SPACING.xs,
   },
   primaryButtonText: {
     color: COLORS.white,
-    fontSize: FONT_SIZES.lg,
+    fontSize: FONT_SIZES.sm,
     fontWeight: 'bold',
   },
   secondaryButton: {
+    flex: 1,
     backgroundColor: COLORS.white,
     borderWidth: 2,
-    borderColor: COLORS.primaryBlue,
+    borderColor: COLORS.primaryOrange,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: SPACING.md,
-    borderRadius: BORDER_RADIUS.md,
-    gap: SPACING.sm,
+    borderRadius: BORDER_RADIUS.full,
+    gap: SPACING.xs,
   },
   secondaryButtonText: {
-    color: COLORS.primaryBlue,
-    fontSize: FONT_SIZES.lg,
+    color: COLORS.primaryOrange,
+    fontSize: FONT_SIZES.sm,
     fontWeight: 'bold',
   },
   trustBadges: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
     flexWrap: 'wrap',
-    gap: SPACING.sm,
+    gap: SPACING.md,
   },
   badge: {
     flexDirection: 'row',
@@ -307,27 +381,37 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZES.sm,
     color: COLORS.textSecondary,
   },
-  statsSection: {
+  heroImage: {
+    width: '100%',
+    height: 220,
+    borderTopLeftRadius: BORDER_RADIUS.xl,
+    borderTopRightRadius: BORDER_RADIUS.xl,
+  },
+  bottomStatCard: {
+    position: 'absolute',
+    bottom: SPACING.lg,
+    left: SPACING.lg,
+    backgroundColor: COLORS.white,
     flexDirection: 'row',
-    padding: SPACING.lg,
-    gap: SPACING.md,
-  },
-  statCard: {
-    flex: 1,
-    backgroundColor: COLORS.primaryBlue,
-    borderRadius: BORDER_RADIUS.lg,
-    padding: SPACING.lg,
     alignItems: 'center',
+    paddingHorizontal: SPACING.lg,
+    paddingVertical: SPACING.md,
+    borderRadius: BORDER_RADIUS.lg,
+    gap: SPACING.sm,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
   },
-  statNumber: {
-    fontSize: FONT_SIZES.hero,
+  bottomStatNumber: {
+    fontSize: FONT_SIZES.xl,
     fontWeight: 'bold',
-    color: COLORS.white,
+    color: COLORS.textPrimary,
   },
-  statLabel: {
-    fontSize: FONT_SIZES.sm,
-    color: 'rgba(255,255,255,0.8)',
-    marginTop: SPACING.xs,
+  bottomStatLabel: {
+    fontSize: FONT_SIZES.xs,
+    color: COLORS.textSecondary,
   },
   section: {
     padding: SPACING.lg,
