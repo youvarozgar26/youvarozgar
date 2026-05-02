@@ -220,6 +220,29 @@ export default function HomeScreen() {
           </View>
         </View>
 
+        {/* Footer */}
+        <View style={styles.footer}>
+          <Image source={{ uri: LOGO_URL }} style={styles.footerLogo} resizeMode="contain" />
+          <Text style={styles.footerTagline}>{APP_CONFIG.tagline}</Text>
+          
+          <View style={styles.footerLinks}>
+            <TouchableOpacity onPress={() => router.push('/about')}>
+              <Text style={styles.footerLink}>About Us</Text>
+            </TouchableOpacity>
+            <Text style={styles.footerDot}>•</Text>
+            <TouchableOpacity onPress={openWhatsApp}>
+              <Text style={styles.footerLink}>Contact</Text>
+            </TouchableOpacity>
+            <Text style={styles.footerDot}>•</Text>
+            <TouchableOpacity onPress={() => router.push('/admin')}>
+              <Text style={styles.footerLink}>Admin Panel</Text>
+            </TouchableOpacity>
+          </View>
+          
+          <Text style={styles.footerCopyright}>© 2024 Youvarozgar. All rights reserved.</Text>
+          <Text style={styles.footerMadeWith}>Made with ❤️ for Maharashtra</Text>
+        </View>
+
         {/* Footer Spacing */}
         <View style={{ height: 100 }} />
       </ScrollView>
@@ -248,8 +271,8 @@ const styles = StyleSheet.create({
     borderBottomColor: COLORS.border,
   },
   logo: {
-    width: 140,
-    height: 45,
+    width: 180,
+    height: 55,
   },
   voiceButton: {
     backgroundColor: COLORS.primaryOrange,
@@ -604,5 +627,45 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
+  },
+  footer: {
+    backgroundColor: COLORS.primaryBlue,
+    padding: SPACING.xl,
+    alignItems: 'center',
+    marginTop: SPACING.lg,
+  },
+  footerLogo: {
+    width: 150,
+    height: 45,
+    tintColor: COLORS.white,
+    marginBottom: SPACING.md,
+  },
+  footerTagline: {
+    fontSize: FONT_SIZES.sm,
+    color: 'rgba(255,255,255,0.8)',
+    marginBottom: SPACING.lg,
+  },
+  footerLinks: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: SPACING.lg,
+  },
+  footerLink: {
+    fontSize: FONT_SIZES.sm,
+    color: COLORS.white,
+    fontWeight: '600',
+  },
+  footerDot: {
+    color: 'rgba(255,255,255,0.5)',
+    marginHorizontal: SPACING.md,
+  },
+  footerCopyright: {
+    fontSize: FONT_SIZES.xs,
+    color: 'rgba(255,255,255,0.6)',
+    marginBottom: SPACING.xs,
+  },
+  footerMadeWith: {
+    fontSize: FONT_SIZES.xs,
+    color: 'rgba(255,255,255,0.6)',
   },
 });
