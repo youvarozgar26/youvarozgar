@@ -15,14 +15,10 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen name="index" />
-        <Stack.Screen name="onboarding/name" />
-        <Stack.Screen name="onboarding/mobile" />
-        <Stack.Screen name="onboarding/otp" />
-        <Stack.Screen name="onboarding/job-category" />
-        <Stack.Screen name="onboarding/location" />
-        <Stack.Screen name="onboarding/success" />
-        <Stack.Screen name="home" />
-        <Stack.Screen name="admin/index" />
+        <Stack.Screen name="job-seeker" />
+        <Stack.Screen name="employer" />
+        <Stack.Screen name="about" />
+        <Stack.Screen name="success" />
       </Stack>
     </>
   );
