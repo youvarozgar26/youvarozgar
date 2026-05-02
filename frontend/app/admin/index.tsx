@@ -19,7 +19,7 @@ import { LOGO_URL } from '../../src/constants/appData';
 
 // Admin credentials (in production, use secure backend auth)
 const ADMIN_EMAIL = 'youvarozgar@gmail.com';
-const ADMIN_PASSWORD = 'admin@123'; // Change this to your preferred password
+const ADMIN_PASSWORD = 'Shabila@2012'; // Change this to your preferred password
 
 export default function AdminLoginScreen() {
   const router = useRouter();
