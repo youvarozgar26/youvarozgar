@@ -58,6 +58,10 @@ export default function AboutScreen() {
             <MaterialIcons name="verified" size={16} color={COLORS.white} />
             <Text style={styles.founderTitle}>{FOUNDER.title}</Text>
           </View>
+          <View style={styles.founderEmail}>
+            <MaterialIcons name="email" size={16} color="rgba(255,255,255,0.9)" />
+            <Text style={styles.founderEmailText}>youvarozgar@gmail.com</Text>
+          </View>
         </View>
 
         {/* About Content */}
@@ -191,6 +195,16 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     fontSize: FONT_SIZES.md,
     fontWeight: '600',
+  },
+  founderEmail: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: SPACING.sm,
+    gap: SPACING.xs,
+  },
+  founderEmailText: {
+    color: 'rgba(255,255,255,0.9)',
+    fontSize: FONT_SIZES.sm,
   },
   content: {
     padding: SPACING.lg,

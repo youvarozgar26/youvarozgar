@@ -19,6 +19,8 @@ export default function RootLayout() {
         <Stack.Screen name="employer" />
         <Stack.Screen name="about" />
         <Stack.Screen name="success" />
+        <Stack.Screen name="admin/index" />
+        <Stack.Screen name="admin/dashboard" />
       </Stack>
     </>
   );
